@@ -34,11 +34,13 @@ class App extends Component{
       ]
     }
   }
-  aumentarEdad =(i, edad)=>{
-    // this.state.listaPersonas.findIndex((persona)=>{persona.edad===edad})
-    // console.log(indice)
+  aumentarEdad =(i, persona)=>{
+    let nuevaPersona= {...persona, edad: persona.edad+1}
+    console.log(nuevaPersona)
+    console.log(this.state.listaPersonas[i])
     this.setState({
-        listaPersonas: [...this.listaPersonas]
+      
+        listaPersonas: [...this.state.listaPersonas, nuevaPersona]
     })
 }
 
@@ -50,7 +52,7 @@ class App extends Component{
         return(
         <>
         <PersonCard  key={index}  nombre={persona.nombre} apellido={persona.apellido} edad={persona.edad} hairColor={persona.hairColor}  />
-        <button onClick={()=>this.aumentarEdad(index, persona.edad)} >Birthday Button for {persona.nombre}  {persona.apellido}</button>
+        <button onClick={()=>this.aumentarEdad(index, persona)} >Birthday Button for {persona.nombre}  {persona.apellido}</button>
         </>
       )})}
       </div>
